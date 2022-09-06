@@ -1,0 +1,32 @@
+{% extends 'auth_base.html' %}
+
+{% block content %}
+
+<div class="auth_panel">
+
+    <h2>Signup</h2>
+
+    <form action="" method="POST">{% csrf_token %}
+
+        {% comment %} <label for="username">Username</label>
+        <input type="text" name="username"></input>
+
+        <label for="password1">Password</label>
+        <input type="text" name="password1"></input>
+
+        <label for="password2">Password</label>
+        <input type="text" name="password2"></input> {% endcomment %}
+
+        {{ form.as_p }}
+
+        <input type="submit" name="submit" id="submit-btn">Submit</input>
+
+    </form>
+
+    <p>{{ form_error }}</p>
+
+    <a href="/login">login</a>
+
+</div>
+
+{% endblock content %}

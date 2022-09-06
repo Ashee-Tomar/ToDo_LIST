@@ -1,0 +1,23 @@
+{% extends 'auth_base.html' %}
+
+{% block content %}
+
+<div class="auth_panel">
+
+    <form action="" method="post">{% csrf_token %}
+
+        <label for="username">Username</label>
+        <input type="text" name="username"></input>
+
+        <label for="password">Password</label>
+        <input type="text" name="password"></input>
+
+        <input type="submit" name="submit" id="submit-btn"></input>
+
+    </form>
+
+    <a href="/signup">Signup</a>
+
+</div>
+
+{% endblock content %}
