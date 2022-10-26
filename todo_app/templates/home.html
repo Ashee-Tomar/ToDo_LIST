@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% comment %} {% if request.user.is_authenticated %}
-<h3>request.user</h3>
-{% else %}
-<a href='/login/'>Login</a>
-{% endif %} {% endcomment %}
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO App</title>
+
+    {% load static %}
+    <link href="{% static 'style.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -19,151 +16,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <style>
-
-        html{
-            height: 100%;
-            width: 100%;
-        }
-
-        .container{
-            margin: 100px auto;
-            max-width: 60%;
-        }
-
-        .task_display{
-            box-shadow: 2px 2px 12px -4px gray;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .add_btn_div{
-            margin: 30px auto;
-            max-width: 120px;
-        }
-
-
-        .card:hover{
-            background: lightgrey;
-        }
-
-        #delete_btn{
-            margin-left: 10px;
-        }
-
-        .desc{
-            margin: 0px 20px;
-        }
-
-        .btn{
-            /* font-size: 20px;
-            word-break: break-all;
-            white-space: revert; */
-
-            font-size: 20px;
-            /* word-break: break-all; */
-            /* white-space: revert; */
-            max-width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .card{
-            border-bottom: 1px inset;
-            padding: 10px 2px;
-        }
-
-        .task_display::-webkit-scrollbar {
-            width: 3px;
-        }
-
-        .task_display::-webkit-scrollbar-thumb {
-            background: #c5c5c5;
-        }
-
-        .card-header{
-            display: flex;
-            align-items: center;
-        }
-
-
-    </style>
+    
 
 </head>
 
+
+
 <body>
 
-    <h2> {{request.user }} </h2>
-
-    <a href="/logout">Logout</a>
-
     <div class="container">
-
-        <div style="text-align: center; margin-bottom: 20px;"><h1>Your Tasks</h1></div>
+        
 
         <div class="task_display">
 
-            <div class="accordion" id="accordionExample">
 
-                {% for i in tasks %}
+            <div class="container-header">
 
-                    <div class="card">
-                    <div class="card-header" id="heading{{i.id}}">
-                
-                        <a id="delete_btn" href="/delete_task/{{ i.id }}">
-                            <i class="material-icons">delete</i>
-                        </a>
+                {% block heading_space %}
+                {% endblock heading_space %}
 
-                        <span class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{ i.id }}" aria-expanded="true" aria-controls="collapse{{ i.id }}">
-                            {{ i.title }}
-                        </span>
-                        
-                    </div>
-                
-                    <div id="collapse{{ i.id }}" class="collapse desc" aria-labelledby="heading{{i.id}}" data-parent="#accordionExample">
-                        <div class="card-body">
-                        {{ i.description }}
-                        </div>
-                    </div>
-                    </div>
-
-                {% endfor %}
-        
             </div>
 
+            {% block web_content %}
 
-            <!-- <Table class="task_table">
-
-                {% for i in tasks %}
-                    <tr class="task-row">
-
-                        <td>
-                            <a id="delete_btn" href="/delete_task/{{ i.id }}">
-                                <i class="material-icons">delete</i>
-                            </a>
-                        </td>
-                        <td><a href="/view_task/{{ i.id }}"> {{ i.title }}</a></td>
-
-                    </tr>
-
-                {% endfor %}
-
-            </table> -->
+            {% endblock web_content %}
+            
         </div>
 
-        <div class="add_btn_div">
-            <a class="btn" href="/add_task"> 
-                <button style="
-                    padding: 5px;
-                    font-size: medium;
-                    max-width: 100px;
-                    border-radius: 5px;" type="button">Add Task</button>
-            </a> 
-        </div>
-
+        {% block add_btn %}{% endblock add_btn %}
+        
     </div>
-
-
     
 </body>
 </html>

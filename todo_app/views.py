@@ -11,22 +11,21 @@ def welcome_page(request):
     if not request.user.is_authenticated:
         return redirect("user_login")
 
-    task_data = Tasks.objects.filter(user=request.user)
-    print(task_data)
+    task_data = Tasks.objects.filter(user=request.user).order_by('complete_status')
     context = {
         'tasks' : task_data,
     }
-    return render(request, 'home.html', context)
+    return render(request, 'task_list.html', context)
 
-# def show_task(request, id):
-#     task = Tasks.objects.get(id=id)
-#     context = {
-#         'requested_task' : task,
-#     }
-#     return render(request, 'task_details.html', context)
 
 def delete_task(request, id):
     Tasks.objects.filter(id=id).delete()
+    return redirect('home_page')
+
+def mark_task(request, id):
+    task = Tasks.objects.get(id=id)
+    task.complete_status = not task.complete_status
+    task.save()
     return redirect('home_page')
 
 def add_task(request):
@@ -69,6 +68,39 @@ def user_signup(request):
 
     return render(request,'signup.html',{'form':form})
 
+
+# def user_login(request):
+
+#     if request.method == 'POST':
+
+#         form = AuthenticationForm(request.POST)
+#         print(form.data)
+#         # username = form.cleaned_data.get('username')
+#         # password = form.cleaned_data.get('password')
+
+#         # print(username,"ps is ",password)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+
+#             print(username,"ps is ",password)
+
+#             user = authenticate(request, username=username, password=password)
+
+#             print("got user",user)
+#             if user is not None:
+#                 login(request, user=user)
+#                 print("all okay")
+#                 return redirect('home_page')
+#             else:
+#                 print("form valid but err ",form.errors.as_text())
+#                 return render(request,'login.html',{'form':form, 'message':form.errors.as_text()})
+#         else:
+            
+#             return render(request,'login.html',{'form':form, 'message':"Please enter a correct username and password. Note that both fields may be case-sensitive."})
+    
+#     form = AuthenticationForm(request.POST)
+#     return render(request,'login.html',{'form':form})
 
 def user_login(request):
 

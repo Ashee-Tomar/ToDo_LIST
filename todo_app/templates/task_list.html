@@ -1,0 +1,78 @@
+{% extends 'home.html' %}
+
+{% block heading_space %}
+    <div><h1>Welcome, {{request.user }}</h1></div>
+    
+    <div style="margin-left: auto;">
+        <a href="/logout" style="color:black;">
+            <i class="material-icons">logout</i>
+        </a>
+    </div>
+{% endblock heading_space %}
+
+{% block web_content %}
+
+    <div class="list">
+
+        <div class="accordion" id="accordionExample">
+
+            {% for i in tasks %}
+    
+                <div class="card">
+                    <div class="card-header" id="heading{{i.id}}">
+
+                        {% if i.complete_status  %}
+                            <button type="button" class="mark_task" style="background-color: greenyellow;" id="mark" onclick="location.href='/mark_task/{{i.id}}'">
+                            </button>
+                        {% else %}
+                            <button type="button" class="mark_task" onclick="location.href='/mark_task/{{i.id}}'">
+                            </button>
+                        {% endif %}
+
+                        <span class="collapsed task_title_view" data-toggle="collapse" data-target="#collapse{{ i.id }}" aria-expanded="true" aria-controls="collapse{{ i.id }}">
+                            <h4>{% if i.complete_status  %}
+                                <s>{{ i.title }}</s>
+                            {% else %}
+                                {{ i.title }}
+                            {% endif %}</h4>
+                        </span>
+                        <div style="margin-left: auto;">
+                            <button type="button" class="delete_task" onclick="location.href='/delete_task/{{i.id}}'">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+
+                    </div>
+                
+                    <div id="collapse{{ i.id }}" class="collapse desc" aria-labelledby="heading{{i.id}}" data-parent="#accordionExample">
+                        <div class="card-body">
+                        {{ i.description }}
+                        </div>
+                    </div>
+
+                </div>
+    
+            {% endfor %}
+    
+        </div>
+
+
+    </div>
+
+    
+{% endblock web_content %}
+
+{% block add_btn %}
+
+<div class="add_btn_div">
+    <a class="btn" href="/add_task"> 
+        <button style="
+            padding: 5px;
+            font-size: medium;
+            max-width: 100px;
+            border-radius: 5px;" type="button">Add Task</button>
+    </a> 
+</div>
+
+{% endblock add_btn %}
+

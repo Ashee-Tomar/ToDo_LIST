@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Task</title>
-</head>
-<body>
-    
-    <div>Add New Task</div>
+{% extends 'home.html' %}
 
-    <div>
+{% block heading_space %}
+<div><h1>Add Task</h1></div>
+{% endblock heading_space %}
+
+{% block web_content %}
+
+    <div style="padding:20px;">
 
         <form action="" method="POST">
             {% csrf_token %}
@@ -21,5 +17,4 @@
 
     </div>
 
-</body>
-</html>
+{% endblock web_content %}

@@ -1,23 +1,23 @@
-{% extends 'auth_base.html' %}
+{% extends 'home.html' %}
 
-{% block content %}
+{% block heading_space %}
+<div><h1>Login</h1></div>
+{% endblock heading_space %}
+
+{% block web_content %}
 
 <div class="auth_panel">
 
-    <form action="" method="post">{% csrf_token %}
+    <form action="" method="POST">{% csrf_token %}
 
-        <label for="username">Username</label>
-        <input type="text" name="username"></input>
+        {{ form.as_p }}
 
-        <label for="password">Password</label>
-        <input type="text" name="password"></input>
-
-        <input type="submit" name="submit" id="submit-btn"></input>
+        <input type="submit" name="Login" id="submit-btn"></input>
 
     </form>
-
+    <p>{{ message }}</p>
     <a href="/signup">Signup</a>
 
 </div>
 
-{% endblock content %}
+{% endblock web_content %}
