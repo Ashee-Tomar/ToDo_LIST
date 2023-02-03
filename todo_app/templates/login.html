@@ -4,6 +4,9 @@
 <div><h1>Login</h1></div>
 {% endblock heading_space %}
 
+{% block logout %}{% endblock logout %}
+
+
 {% block web_content %}
 
 <div class="auth_panel">
@@ -15,7 +18,7 @@
         <input type="submit" name="Login" id="submit-btn"></input>
 
     </form>
-    <p>{{ message }}</p>
+    <p id="error-msg">{{ form_error }}</p>
     <a href="/signup">Signup</a>
 
 </div>

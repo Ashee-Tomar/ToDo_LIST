@@ -1,22 +1,13 @@
-html {
-    height: 100%;
-    width: 100%;
+html * {
+    font-family: 'Rajdhani', sans-serif;
 }
 
 .container {
-    margin: 100px auto;
-}
-
-.container-header{
-    padding: 10px;
-    background-image: linear-gradient(0deg, aquamarine, yellow);
-    width: 100%;
-    display: flex;
+    margin: 70px auto;
 }
 
 .task_display {
     box-shadow: 2px 2px 12px -4px gray;
-    max-height: 500px;
     max-width: 60%;
     margin: auto;
 }
@@ -31,13 +22,35 @@ html {
     max-width: 120px;
 }
 
-
-.card:hover {
-    background: lightgrey;
+.delete_task{
+    visibility: hidden;
 }
 
-#delete_btn {
-    margin: 0px 10px;
+.card:hover .delete_task {
+    visibility: visible;
+}
+
+.card:hover{
+    /* background: lightgrey; */
+    /* border-style: solid red; */
+    border:1px solid #e59eaf;
+
+}
+
+.mark_task {
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    margin: 10px 10px;
+    border: none;
+    padding: 10px;
+    visibility: hidden;
+    /* display: none; */
+}
+
+.card:hover .mark_task{
+    /* display: block; */
+    visibility: visible;
 }
 
 .desc {
@@ -49,11 +62,13 @@ html {
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: black;
 }
 
 .card {
-    border-bottom: 1px inset;
+    /* border-bottom: 1px inset; */
     padding: 5px 0px;
+    text-align: start;
 }
 
 .list::-webkit-scrollbar {
@@ -72,15 +87,6 @@ html {
     padding: 20px;
 }
 
-.mark_task {
-    height: 20px;
-    width: 20px;
-    border-radius: 10px;
-    margin: 10px 10px;
-    border: none;
-    padding: 10px;
-}
-
 .task_title_view {
     max-width: 100%;
     overflow: hidden;
@@ -94,10 +100,75 @@ html {
     border: none;
 }
 
+
+#app-name {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.uname{
+    text-align: start;
+    font-size: large;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.add-btn{
+            padding: 5px;
+            font-size: medium;
+            max-width: 100px;
+            border: 1px #e59eaf solid;
+            background: #e59eaf;
+}
+
+#div-search-bar{
+    margin: 50px;
+}
+
+#search-bar{
+    width: 30%;
+    height: 30px;
+    border: 1px #e59eaf solid;
+}
+
+#search{
+    height: 30px;
+    border: 1px #e59eaf solid;
+    background: #e59eaf;
+}
+
+#logout-btn{
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
+
+#error-msg{
+    color: red;
+}
+
+#app-name-home{
+    color: black;
+}
+
 @media only screen and (max-width: 450px) {
     .task_display {
         width: 100%;
         max-width: 100%;
     }
-}
 
+    #search_form{
+        width: 100%;
+    }
+
+    #search-bar{
+        width: 80%;
+    }
+
+    #app-name{
+        margin-top: 10px;
+    }
+
+}

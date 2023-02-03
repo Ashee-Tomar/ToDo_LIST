@@ -1,16 +1,39 @@
 {% extends 'home.html' %}
 
-{% block heading_space %}
-    <div><h1>Welcome, {{request.user }}</h1></div>
+
+
+
+{% comment %} {% block heading_space %}
+    
     
     <div style="margin-left: auto;">
         <a href="/logout" style="color:black;">
             <i class="material-icons">logout</i>
         </a>
     </div>
-{% endblock heading_space %}
+{% endblock heading_space %} {% endcomment %}
+
+{% block search_bar %}
+
+    <div id="div-search-bar">
+        <form action= {% url 'search_task' %} method="GET" id="search_form">
+            <input type="text" id="search-bar" name="searched_title" required>
+            <input type="submit" id="search" value="Search">
+        </form>
+    </div>
+
+{% endblock search_bar %}
 
 {% block web_content %}
+
+<div class="uname">
+    <p>{{request.user }} 's TODOs :-</p>
+
+    <div class="task-stats">
+        <p> Completed {{complete__tasks}} &nbsp; Remaining {{incomplete_tasks}}</p>
+    </div>
+
+</div>
 
     <div class="list">
 
@@ -65,12 +88,8 @@
 {% block add_btn %}
 
 <div class="add_btn_div">
-    <a class="btn" href="/add_task"> 
-        <button style="
-            padding: 5px;
-            font-size: medium;
-            max-width: 100px;
-            border-radius: 5px;" type="button">Add Task</button>
+    <a class="btn" href="{% url 'add_task' %}"> 
+        <button class="add-btn" type="button">Add Task</button>
     </a> 
 </div>
 

@@ -5,6 +5,8 @@
     
 {% endblock heading_space %}
 
+{% block logout %}{% endblock logout %}
+
 {% block web_content %}
 
 <div class="auth_panel">
@@ -18,7 +20,7 @@
 
     </form>
 
-    <p>{{ form_error }}</p>
+    <p id="error-msg">{{ form_error }}</p>
 
     <a href="/login">login</a>
 
