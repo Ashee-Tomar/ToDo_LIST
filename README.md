@@ -1,52 +1,27 @@
-# Todo-List App
-
-A Django-based web application that allows users to create, manage, and track their tasks. This app features a minimal user interface and the following functionality:
-
-- Create tasks
-- Mark tasks as done
-- Delete tasks
-- Search tasks
-
-Additionally, the app includes user authentication and authorization, ensuring that each user only has access to their own tasks.
-
-### ScreenShots
-
-<img src = "https://user-images.githubusercontent.com/79650580/216557311-04e970f0-b056-438e-ba89-8abbd6f5b64e.png" width=900 height=550>
+#Todo-List App
+A Django-based Todo-List app that enables users to create, manage, and track their tasks with features like task creation, deletion, search, and marking tasks as done. The app also incorporates user authentication, ensuring that each user can only view and manage their own tasks. It has a simple interface with a form for creating tasks, action buttons for task updates, and a search bar to find tasks easily.
 
 
-## Getting Started
+##Features:
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+Create, Edit, Delete Tasks: Users can add, edit, and remove tasks.<br/>
+Mark as Done: Tasks can be marked as completed.<br/>
+Search Tasks: Users can search through tasks.<br/>
+User Authentication: Each user has access to their tasks only.<br/>
 
-### Prerequisites
 
-- Python 3.10 or higher
-- Django 4.1 or higher
+##Prerequisites:
+<ul>
+<li>Python 3.x</li>
+<li>Django framework</li>
+<li>Basic understanding of HTML/CSS</li>
+<li>Familiarity with Django’s user authentication system</li>
+</ul>
 
-### Installation
+##Technologies Used:
+Django for backend and user authentication</br>
+SQLite/PostgreSQL for database management</br>
 
-1. Clone the repository:
 
-    ` git clone https://github.com/Raj-m01/Todo-list.git `
 
-2. Change into the project directory:
 
-    ` cd Todo-list `
-
-3. Install the required packages:
-
-    ` pip install -r requirements.txt `
-
-4. Apply the migrations:
-
-    ` python manage.py migrate `
-
-5. Start the development server:
-
-    ` python manage.py runserver `
-
-The app should now be accessible at `http://localhost:8000`.
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to the project, please create a pull request.
