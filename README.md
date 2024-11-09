@@ -18,7 +18,7 @@ User Authentication: Each user has access to their tasks only.<br/>
 <li>Familiarity with Django’s user authentication system</li>
 </ul>
 
-##Technologies Used:
+## Technologies Used:
 Django for backend and user authentication</br>
 SQLite/PostgreSQL for database management</br>
 
